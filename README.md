@@ -1,25 +1,34 @@
 # react_start_template
 Startup code for react project. Configured to use babel and webpack with react
 
-# Usage
+## Usage
 
-Clone repo 
-<code>
-  git pull https://github.com/cobsa/react_start_template.git
-</code>
+Clone repo
 
-<code>
-  yarn
-</code>
+```
+git pull https://github.com/cobsa/react_start_template.git
+```
+
+### Install depencies
+
+```
+yarn
+```
+
 or 
-<code>
+
+```
 npm install
-</code>
-and then run
-<code>
- yarn run dev
-</code>
-or
-<code>
-  npm run dev
- </code>
+```
+
+### Run development server
+
+```
+yarn run dev
+```
+
+or 
+
+```
+npm run dev
+```
