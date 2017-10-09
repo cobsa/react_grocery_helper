@@ -9,7 +9,7 @@ const defaultState = {
 
 }
 
-const user = (state=defaultState, action) => {
+function user(state=defaultState, action) {
     switch (action.type) {
         case 'LOGIN_USER':
             return {
