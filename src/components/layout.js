@@ -3,7 +3,6 @@ import {Grid, Row, Col } from 'react-bootstrap'
 import {Route, Redirect} from 'react-router-dom'
 
 import NavbarComponent from './navbar'
-import fire from '../firebaseConfig'
 // Pages
 import Baskets from '../pages/baskets'
 import IndexPage from '../pages/index'
@@ -16,9 +15,9 @@ import LoginOrSignup from '../pages/loginOrSignup'
 export default class Layout extends React.Component {
     constructor() {
         super()
-        this.setState({
+        this.state = {
             logged: false
-        })
+        }
         this.loggedIn = this.loggedIn.bind(this)
         
     }
@@ -30,7 +29,7 @@ export default class Layout extends React.Component {
     render() {
         return(
             <div>
-                <NavbarComponent user={fire.auth().currentUser}/>
+                <NavbarComponent/>
                 <Grid>
                     <Row className="show-grid">
                         <Col xs={12} md={8}>

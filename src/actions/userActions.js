@@ -1,4 +1,4 @@
-import { firebase } from '../firebaseConfig'
+import  fire  from '../firebaseConfig'
 
 export const loggingUser = () =>  {
     return {
@@ -26,7 +26,7 @@ export const userLoggedOut = () => {
         type: 'USER_LOGGED_OUT'
     }
 }
-export const error = (error) => {
+export const userError = (error) => {
     return {
         type: 'USER_ERROR',
         payload: {
@@ -40,19 +40,19 @@ export function loginUser(email, password) {
         // Set state to isFetching = true
         dispatch(loggingUser())
         //set listeners for auth events
-        firebase.auth().onAuthStateChanged((user) => {
+        fire.auth().onAuthStateChanged((user) => {
             if(user) {
                 // User is logged in
-                let uid = firebase.auth().currentUser.uid
-                let email = firebase.auth().currentUser.email
+                let uid = user.uid
+                let email = user.email
                 dispatch(userLoggedIn(uid, email))
             } else {
                 // User is logged out 
                 dispatch(userLoggedOut())
             }
         })
-        return firebase.auth().signInWithEmailAndPassword(email,password).catch((error)=> {
-            dispatch(error(error.message))
+        return fire.auth().signInWithEmailAndPassword(email,password).catch((error)=> {
+            dispatch(userError(error.message))
         })
     }
 }

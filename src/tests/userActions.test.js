@@ -46,7 +46,7 @@ describe('actions', () => {
                 error
             }
         }
-        expect(actions.error(error)).toEqual(expectedAction)
+        expect(actions.userError(error)).toEqual(expectedAction)
     })
 })
 
@@ -55,31 +55,21 @@ describe('actions', () => {
 const middleWares = [thunk]
 const mockStore = configureMockStore(middleWares)
 
-/*
+
 describe('firebase auth actions', () => {
     it('creates actions on failed login', () => {
         const email = "example@example.com"
         const password = "=HJKAJKLÖDS213"
         const expectedActions = [
             {type: 'LOGIN_USER'},
+            {type: 'USER_LOGGED_OUT'},
             {type: 'USER_ERROR',
             payload: {
-                error: 'something'
+                error: 'A network error (such as timeout, interrupted connection or unreachable host) has occurred.'
             }}]
         const store = mockStore({})
-        const mockdatabase = new MockFirebase()
-        const mockauth = new MockFirebase()
-        const mocksdk = MockFirebaseSdk(function(path){
-            return path ? mockdatabase.child(path):mockdatabase
-        },function() {
-            return mockauth
-        })
-        proxyquire('../', {
-            firebase: mocksdk
-        })
         return store.dispatch(actions.loginUser(email,password)).then( () =>{
             expect(store.getActions()).toEqual(expectedActions)
         })
     })
 })
-*/

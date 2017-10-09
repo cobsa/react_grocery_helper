@@ -1,7 +1,5 @@
 import React from 'react'
 import { Panel, PanelGroup,FormGroup, FormControl, Button, ListGroup, ListGroupItem } from 'react-bootstrap'
-
-import BasketStore from '../basketStore'
 import Basket from '../components/basket'
 
 
@@ -10,10 +8,6 @@ export default class Baskets extends React.Component {
         super()
         this.addBasket = this.addBasket.bind(this)
         this.handleBasketName = this.handleBasketName.bind(this)
-        this.state = {
-            baskets: BasketStore.getAll(),
-            newBasketName: ''
-        }
     }
     
     

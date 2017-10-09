@@ -13,7 +13,7 @@ const initialState = [{
     ]
 }]
 
-function basket(state=initialState, action) {
+const basket = (state=initialState, action) => {
     switch(action.type) {
         case 'ADD_BASKET': {
             let newArray = state.slice()
