@@ -1,13 +1,18 @@
 import React from 'react'
 import { Nav, Navbar, NavItem } from 'react-bootstrap'
 import {LinkContainer, IndexLinkContainer} from 'react-router-bootstrap'
+import { connect } from 'react-redux'
 
-
+@connect((store) => {
+    return {
+        user: store.user.user
+    }
+})
 export default class NavbarComponent extends React.Component {
     loginOrSignUp() {
         // todo get user
-        var user = undefined
-        if(user) {
+        var user = this.props.user
+        if(user.id) {
             return (
                 <Nav pullRight>
                     <LinkContainer to="/logout">
