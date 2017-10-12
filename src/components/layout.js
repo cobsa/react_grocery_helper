@@ -1,6 +1,7 @@
 import React from 'react'
 import {Grid, Row, Col } from 'react-bootstrap'
-import {Route, Redirect} from 'react-router-dom'
+import {Route} from 'react-router'
+import { connect } from 'react-redux'
 
 import NavbarComponent from './navbar'
 // Pages
@@ -11,20 +12,19 @@ import SignUp from '../pages/signup'
 import LogOut from '../pages/logout'
 import LoginOrSignup from '../pages/loginOrSignup'
 
-
+@connect((store)=> {
+    return {
+        logged: store.user.logged
+    }
+})
 export default class Layout extends React.Component {
     constructor() {
         super()
-        this.state = {
-            logged: false
-        }
         this.loggedIn = this.loggedIn.bind(this)
         
     }
-    componentWillMount() {
-    }
     loggedIn() {
-        return this.state.logged
+        return this.props.logged
     }
     render() {
         return(
@@ -34,34 +34,7 @@ export default class Layout extends React.Component {
                     <Row className="show-grid">
                         <Col xs={12} md={8}>
                             <Route exact path="/" component={IndexPage}/>
-                            <Route path="/baskets" render={() => (
-                                this.loggedIn() ? (
-                                    <Baskets/>
-                                ) : (
-                                    <Redirect to="/loginOrSignup"/>
-                                )
-                            )}/>
-                            <Route path="/login" render={() => (
-                                this.loggedIn() ? (
-                                    <Redirect to="/"/>
-                                ) : (
-                                    <LogIn/>
-                                )
-                            )}/>
-                            <Route path="/signup" render={() => (
-                                this.loggedIn() ? (
-                                    <Redirect to="/"/>
-                                ) : (
-                                    <SignUp/>
-                                )
-                            )}/>
-                            <Route path="/logout" render={() => (
-                                this.loggedIn() ? (
-                                    <LogOut/>
-                                ) : (
-                                    <Redirect to="/"/>
-                                )
-                            )}/>
+                            <Route path="/baskets" component={Baskets}/>
                             <Route path="/loginOrSignup" component={LoginOrSignup}/>
                         </Col>
                     </Row>

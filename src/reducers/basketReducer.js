@@ -1,3 +1,7 @@
+/*
+
+Basket store structure
+
 const initialState = [{
     name: 'Testi Basket',
     id: 'ijoapsdjad89213',
@@ -12,20 +16,33 @@ const initialState = [{
         }
     ]
 }]
+*/
 
+const initialState = []
 const basket = (state=initialState, action) => {
     switch(action.type) {
-        case 'ADD_BASKET': {
+        case 'ADD_BASKET_TO_STORE': {
             let newArray = state.slice()
             newArray.push({
                 name: action.payload.name,
-                id: null,
+                id: action.payload.id,
                 ingredients: []
             })
             return newArray
         }
         case 'REMOVE_BASKET': {
+            // TODO
             return state
+        }
+
+        case 'ADD_INGREDIENT_ARRAY_TO_BASKET': {
+            let newArray = state.slice()
+            newArray.forEach((basket, index) => {
+                if (basket.id === action.payload.basket_id) {
+                    newArray[index].ingredients = action.payload.ingredients
+                }
+            })
+            return newArray
         }
         case 'ADD_INGREDIENT_TO_BASKET': {
             // Create new instance of array so orginal
@@ -45,6 +62,9 @@ const basket = (state=initialState, action) => {
         }
         case 'REMOVE_INGREDIENT_FROM_BASKET': {
             return state
+        }
+        case 'RESET_STORE': {
+            return []
         }
 
         

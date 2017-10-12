@@ -39,7 +39,7 @@ export function loginUser(email, password) {
     return function (dispatch) {
         // Set state to isFetching = true
         dispatch(loggingUser())
-        //set listeners for auth events
+        // Set listeners for auth events
         fire.auth().onAuthStateChanged((user) => {
             if(user) {
                 // User is logged in

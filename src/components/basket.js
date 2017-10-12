@@ -1,6 +1,8 @@
 import React from 'react'
 import {Button, FormGroup, FormControl, ListGroup, ListGroupItem } from 'react-bootstrap'
 
+import { addIngredientToBasket } from '../actions/basketActions'
+
 
 
 export default class Basket extends React.Component {
@@ -20,7 +22,7 @@ export default class Basket extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault()
-        
+        this.props.dispatch(addIngredientToBasket(this.props.id,this.state.ingredient, 3))
         this.setState({
             ingredient: ''
         })
@@ -29,6 +31,7 @@ export default class Basket extends React.Component {
     render() {
         var {ingredients} = this.props
         var basketIngredients
+        console.log(this.props)
         if(ingredients != undefined) {
             basketIngredients = ingredients.map((ingredient)=>{
                 return (<ListGroupItem key={ingredient.name}>{ingredient.name}</ListGroupItem>)
