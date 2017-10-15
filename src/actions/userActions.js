@@ -1,4 +1,6 @@
-import  fire  from '../firebaseConfig'
+import  firebase  from '../firebaseConfig'
+
+import { resetStore, getAll} from './basketActions'
 
 export const loggingUser = () =>  {
     return {
@@ -7,8 +9,10 @@ export const loggingUser = () =>  {
 }
 
 export const loggingOutUser = () => {
-    return {
-        type: 'LOGOUT_USER'
+    return function(dispatch) {
+        firebase.auth().signOut().then( () => {
+            dispatch(userLoggedOut())
+        })
     }
 }
 
@@ -21,9 +25,12 @@ export const userLoggedIn = (uid, email) => {
         }
     }
 }
-export const userLoggedOut = () => {
-    return {
-        type: 'USER_LOGGED_OUT'
+export function userLoggedOut () {
+    return function (dispatch) {
+        dispatch(resetStore)
+        dispatch(
+            {type: 'USER_LOGGED_OUT'}
+        )
     }
 }
 export const userError = (error) => {
@@ -40,19 +47,29 @@ export function loginUser(email, password) {
         // Set state to isFetching = true
         dispatch(loggingUser())
         // Set listeners for auth events
-        fire.auth().onAuthStateChanged((user) => {
-            if(user) {
-                // User is logged in
-                let uid = user.uid
-                let email = user.email
-                dispatch(userLoggedIn(uid, email))
-            } else {
-                // User is logged out 
-                dispatch(userLoggedOut())
-            }
-        })
-        return fire.auth().signInWithEmailAndPassword(email,password).catch((error)=> {
+        firebase.auth().signInWithEmailAndPassword(email,password).catch((error)=> {
             dispatch(userError(error.message))
+        })
+    }
+}
+
+export function signUpUser(email, password) {
+    return function (dispatch) {
+        firebase.auth().createUserWithEmailAndPassword(email, password).catch( (error) => {
+            dispatch(userError(error.message))
+        })
+    }
+}
+
+export function checkLoginStatus() {
+    // Must be initialized before any other actions is used
+    return function(dispatch) {
+        firebase.auth().onAuthStateChanged( (user) => {
+            if(user) {
+                // Initialize listeners for authChange and value change in /baskets
+                dispatch(userLoggedIn(user.uid, user.email))
+                dispatch(getAll())
+            }
         })
     }
 }

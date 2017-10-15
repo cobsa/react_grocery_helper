@@ -1,8 +1,15 @@
 import React from 'react'
 import { Alert, Button, FormControl, FormGroup, ControlLabel } from 'react-bootstrap'
+import {connect} from 'react-redux'
+
+import { signUpUser } from '../actions/userActions'
 
 
+@connect((store) => {
+    return {
 
+    }
+})
 export default class SignUp extends React.Component {
     constructor() {
         super()
@@ -37,7 +44,8 @@ export default class SignUp extends React.Component {
 
     handleSubmit(e) {
          //TODO
-
+         e.preventDefault()
+        this.props.dispatch(signUpUser(this.state.email, this.state.password))
     }
 
     printError() {

@@ -19,12 +19,8 @@ export default class Baskets extends React.Component {
             newBasketName: undefined
         }
     }
-
-    componentWillMount() {
-        this.props.dispatch(getAll())
-    }
-
     handleBasketName(e) {
+        e.preventDefault()
         this.setState({
             newBasketName: e.target.value
         })
@@ -32,6 +28,9 @@ export default class Baskets extends React.Component {
     addBasket(e) {
         e.preventDefault()
         this.props.dispatch(addBasket(this.state.newBasketName))
+        this.setState({
+            newBasketName: ''
+        })
 
     }
     render() {

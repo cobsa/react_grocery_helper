@@ -35,10 +35,12 @@ describe('basket reducer', () => {
     })
     it('should add basket', () => {
         const name = "testing baskets"
+        const id = '8921431huaisdjhf8asd'
         expect(basket(initialState,{
-            type: 'ADD_BASKET',
+            type: 'ADD_BASKET_TO_STORE',
             payload: {
-                name
+                name,
+                id
             }
         })).toEqual([
             {
@@ -57,7 +59,7 @@ describe('basket reducer', () => {
             },
             {
                 name,
-                id: null,
+                id,
                 ingredients: []
             }
         ])
