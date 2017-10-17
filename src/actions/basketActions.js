@@ -31,10 +31,16 @@ export const addBasketToStore =  (name, id) => {
 }
 
 export const deleteBasket = (id) => {
-    return {
-        type: 'DELETE_BASKET',
-        payload: {
-            id
+    return function(dispatch) {
+        const user = firebase.auth().currentUser
+        const database = firebase.database()
+        if(user) {
+            const basketRef = database.ref('/baskets/' + id)
+            basketRef.remove().catch((firebaseError) =>  {
+                dispatch(error(firebaseError))
+            })
+        } else {
+            dispatch(error('USER_NOT_LOGGED_IN'))
         }
     }
 }
@@ -71,13 +77,24 @@ export const addIngredientToBasket = (basket_id, ingredient_name, ingredient_cou
 }
 
 export const removeIngredientFromBasket = (basket_id, ingredient_name) => {
-    return {
-        type: 'REMOVE_INGREDIENT_FROM_BASKET',
-        payload: {
-            basket_id,
-            ingredient_name
+    return function(dispatch) {
+        const user = firebase.auth().currentUser
+        const database = firebase.database()
+        if (user) {
+            const ingredients_ref = database.ref('/baskets/'+ basket_id + '/ingredients')
+            let ingredient_key = undefined
+            ingredients_ref.once('value', (snapshot) => {
+                snapshot.forEach((ingredient) => {
+                    if(ingredient.child('name').val() == ingredient_name) {
+                        ingredient_key =  ingredient.key
+                    }
+                })
+            })
+            database.ref('baskets/' + basket_id + '/ingredients/' + ingredient_key).remove()
+           
+        } else {
+            dispatch(error('USER_NOT_LOGGED_IN'))
         }
-        
     }
 }
 

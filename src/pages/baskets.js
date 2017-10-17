@@ -37,7 +37,7 @@ export default class Baskets extends React.Component {
         const { baskets } = this.props
         const {dispatch } = this.props
         var BasketComponents = baskets.map((basket) => {
-            return (<Panel collapsible header={basket.name} key={basket.id + 'panel'}><Basket key={basket.id} {...basket} dispatch={dispatch} /></Panel>)
+            return (<Panel collapsible defaultExpanded header={basket.name} key={basket.id + 'panel'}><Basket key={basket.id} {...basket} dispatch={dispatch} /></Panel>)
         })
         return(
             <div>

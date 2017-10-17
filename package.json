@@ -9,6 +9,7 @@
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.7.0",
     "eslint-config-google": "^0.9.1",
+    "eslint-plugin-jest": "^21.2.0",
     "eslint-plugin-react": "^7.3.0",
     "firebase-mock": "^1.1.5",
     "jest": "^21.2.1",
@@ -37,7 +38,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --inline --hot --content-base src/",
-    "test": "jest",
+    "test": "jest --coverage",
     "test:watch": "npm test -- --watch"
   }
 }
