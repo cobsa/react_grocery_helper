@@ -6,7 +6,7 @@ export default class IndexPage extends React.Component {
         return(
             <Jumbotron>
                 <h1>Hello, world!</h1>
-                <p>This is simple react application to handle shopping list via baskets&ingredients</p>
+                <p>This is simple react application to handle shopping list. It uses Google firebase database to handle baskets and their contents. Made using React/Redux/React Bootstrap</p>
             </Jumbotron>)
     }
 }

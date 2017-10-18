@@ -10,13 +10,13 @@ import { connect } from 'react-redux'
 })
 export default class NavbarComponent extends React.Component {
     loginOrSignUp() {
-        // todo get user
+        // Defines what is displayed when user if logged in and not
         var user = this.props.user
         if(user.id) {
             return (
                 <Nav pullRight>
                     <LinkContainer to="/logout">
-                        <NavItem eventKey={4}>Log out {user.email}</NavItem>
+                        <NavItem>Log out {user.email}</NavItem>
                     </LinkContainer>
                 </Nav>
             )
@@ -25,10 +25,10 @@ export default class NavbarComponent extends React.Component {
             return (
                 <Nav pullRight>
                     <LinkContainer to="/login">
-                        <NavItem eventKey={5}>Login</NavItem>
+                        <NavItem>Login</NavItem>
                     </LinkContainer>
                     <LinkContainer to="/signup">
-                        <NavItem eventKey={6}>Sign up</NavItem>
+                        <NavItem>Sign up</NavItem>
                     </LinkContainer>
                 </Nav>
             )
@@ -44,11 +44,11 @@ export default class NavbarComponent extends React.Component {
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>
-                    <IndexLinkContainer to="/">
-                        <NavItem eventKey={1}>Home</NavItem>
+                    <IndexLinkContainer to="">
+                        <NavItem>Home</NavItem>
                     </IndexLinkContainer>
                     <LinkContainer to="/baskets">
-                        <NavItem eventKey={2}>Baskets</NavItem>
+                        <NavItem>Baskets</NavItem>
                     </LinkContainer>
                 </Nav>
                 {LoginMenu}
