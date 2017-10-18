@@ -108,14 +108,6 @@ export const addIngredientArrayToBasket = (basket_id,ingredients) => {
     }
 }
 
-export const updatingStore = () => {
-    return {
-        type: 'UPDATING_STORE',
-        payload: {
-            fetching:true
-        }
-    }
-}
 
 export const resetStore = () => {
     return {

@@ -1895,6 +1895,10 @@ event-emitter@~0.3.5:
     d "1"
     es5-ext "~0.10.14"
 
+eventemitter2@^4.1.0:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/eventemitter2/-/eventemitter2-4.1.2.tgz#0e1a8477af821a6ef3995b311bf74c23a5247f15"
+
 eventemitter3@1.x.x:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-1.2.0.tgz#1c86991d816ad1e504750e73874224ecf3bec508"
@@ -2129,6 +2133,10 @@ firebase-auto-ids@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/firebase-auto-ids/-/firebase-auto-ids-1.1.0.tgz#378ffb8590888c37eb2dd8b704659ad0f49f9061"
 
+firebase-key@^1.0.0:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/firebase-key/-/firebase-key-1.0.5.tgz#c169434920d97caf97dbaac2fba1d28d4b395008"
+
 firebase-mock@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/firebase-mock/-/firebase-mock-1.1.5.tgz#24ee3c0d866ab9a030519d0442ae96135334d101"
@@ -2137,6 +2145,16 @@ firebase-mock@^1.1.5:
     lodash "^3.10.1"
     md5 "~2.2.1"
     rsvp "^3.3.3"
+
+firebase-nightlight@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/firebase-nightlight/-/firebase-nightlight-2.2.5.tgz#b1381f2cbddb93ce7e75b032b27d21f30be599f3"
+  dependencies:
+    eventemitter2 "^4.1.0"
+    firebase-key "^1.0.0"
+    json-pointer "^0.6.0"
+    lodash "^4.17.4"
+    tslib "^1.6.1"
 
 firebase@^4.5.0:
   version "4.5.0"
@@ -2168,7 +2186,7 @@ for-own@^0.1.4:
   dependencies:
     for-in "^1.0.1"
 
-foreach@^2.0.5:
+foreach@^2.0.4, foreach@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/foreach/-/foreach-2.0.5.tgz#0bee005018aeb260d0a3af3ae658dd0136ec1b99"
 
@@ -3175,6 +3193,12 @@ jsesc@~0.5.0:
 json-loader@^0.5.4:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/json-loader/-/json-loader-0.5.7.tgz#dca14a70235ff82f0ac9a3abeb60d337a365185d"
+
+json-pointer@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/json-pointer/-/json-pointer-0.6.0.tgz#8e500550a6aac5464a473377da57aa6cc22828d7"
+  dependencies:
+    foreach "^2.0.4"
 
 json-schema-traverse@^0.3.0:
   version "0.3.1"
@@ -4953,6 +4977,10 @@ trim-right@^1.0.1:
 tryit@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tryit/-/tryit-1.0.3.tgz#393be730a9446fd1ead6da59a014308f36c289cb"
+
+tslib@^1.6.1:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.8.0.tgz#dc604ebad64bcbf696d613da6c954aa0e7ea1eb6"
 
 tty-browserify@0.0.0:
   version "0.0.0"

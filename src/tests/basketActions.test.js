@@ -1,28 +1,47 @@
 import * as actions from '../actions/basketActions'
 
 describe('actions', () => {
-    it('should create action to delete basket', () => {
-        const id = '12983471289043'
-        const expectedAction = {
-            type: 'DELETE_BASKET',
+
+    it('should create action to add basket to store', () => {
+        const name = 'basket name'
+        const id = 'basket_id'
+        expect(actions.addBasketToStore(name, id)).toEqual({
+            type: 'ADD_BASKET_TO_STORE',
             payload: {
+                name,
                 id
             }
-        }
-        expect(actions.deleteBasket(id)).toEqual(expectedAction)
+        })
     })
-    it('should create action to remove ingredient from basket', () => {
-        const basket_id = 'hsad9123hui'
-        const ingredient_name = 'someingredient'
-        const expectedAction = {
-            type: 'REMOVE_INGREDIENT_FROM_BASKET',
+
+    it('should create action to add ingredient array to basket', () => {
+        const basket_id = 'jaosd981238hads'
+        const ingredients = [
+            'ingredient 1',
+            'ingredient 2'
+        ]
+
+        expect(actions.addIngredientArrayToBasket(basket_id, ingredients)).toEqual({
+            type: 'ADD_INGREDIENT_ARRAY_TO_BASKET',
             payload: {
                 basket_id,
-                ingredient_name
+                ingredients
             }
-        }
-        expect(actions.removeIngredientFromBasket(basket_id, ingredient_name))
-            .toEqual(expectedAction)
-        
+        })
+    })
+
+    it('should create action to reset store', () => {
+        expect(actions.resetStore()).toEqual({
+            type: 'RESET_STORE'
+        })
+    })
+    it('should create action to set error state', () => {
+        const error = 'RANDOM_ERROR_MESSAGE'
+        expect(actions.error(error)).toEqual({
+            type: 'BASKET_ERROR',
+            payload: {
+                error
+            }
+        })
     })
 })

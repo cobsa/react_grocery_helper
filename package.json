@@ -12,6 +12,7 @@
     "eslint-plugin-jest": "^21.2.0",
     "eslint-plugin-react": "^7.3.0",
     "firebase-mock": "^1.1.5",
+    "firebase-nightlight": "^2.2.5",
     "jest": "^21.2.1",
     "nock": "^9.0.22",
     "redux-logger": "^3.0.6",

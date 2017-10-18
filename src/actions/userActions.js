@@ -27,10 +27,10 @@ export const userLoggedIn = (uid, email) => {
 }
 export function userLoggedOut () {
     return function (dispatch) {
-        dispatch(resetStore)
         dispatch(
             {type: 'USER_LOGGED_OUT'}
         )
+        dispatch(resetStore())
     }
 }
 export const userError = (error) => {
@@ -47,7 +47,7 @@ export function loginUser(email, password) {
         // Set state to isFetching = true
         dispatch(loggingUser())
         // Set listeners for auth events
-        firebase.auth().signInWithEmailAndPassword(email,password).catch((error)=> {
+        return firebase.auth().signInWithEmailAndPassword(email,password).catch((error)=> {
             dispatch(userError(error.message))
         })
     }

@@ -30,10 +30,6 @@ const basket = (state=initialState, action) => {
             })
             return newArray
         }
-        case 'REMOVE_BASKET': {
-            // TODO
-            return state
-        }
 
         case 'ADD_INGREDIENT_ARRAY_TO_BASKET': {
             let newArray = state.slice()
@@ -59,9 +55,6 @@ const basket = (state=initialState, action) => {
                 }
             })
             return newArray
-        }
-        case 'REMOVE_INGREDIENT_FROM_BASKET': {
-            return state
         }
         case 'RESET_STORE': {
             return []
