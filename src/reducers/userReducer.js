@@ -5,7 +5,7 @@ const defaultState = {
     },
     logged: false,
     isFetching: false,
-    error: null,
+    error: undefined,
 
 }
 
@@ -30,6 +30,7 @@ function user(state=defaultState, action) {
                 },
                 logged: true,
                 isFetching: false,
+                error: undefined
             }
         case 'USER_LOGGED_OUT': 
             return {
@@ -40,6 +41,7 @@ function user(state=defaultState, action) {
                 },
                 logged: false,
                 isFetching: false,
+                error: undefined
             }
         case 'USER_ERROR':
             return {

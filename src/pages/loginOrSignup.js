@@ -9,10 +9,10 @@ export default class LoginOrSignup extends React.Component {
                 <h1>Login or Sign up</h1>
                 <p>To view this page please login or sign up</p>
                 <LinkContainer to="/login">
-                    <Button eventKey={5}>Login</Button>
+                    <Button>Login</Button>
                 </LinkContainer>
                 <LinkContainer to="/signup">
-                    <Button eventKey={6}>Sign up</Button>
+                    <Button>Sign up</Button>
                 </LinkContainer>
             </Jumbotron>)
     }

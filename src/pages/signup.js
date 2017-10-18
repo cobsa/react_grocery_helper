@@ -2,12 +2,12 @@ import React from 'react'
 import { Alert, Button, FormControl, FormGroup, ControlLabel } from 'react-bootstrap'
 import {connect} from 'react-redux'
 
-import { signUpUser } from '../actions/userActions'
+import { signUpUser,userError } from '../actions/userActions'
 
 
 @connect((store) => {
     return {
-
+        user: store.user
     }
 })
 export default class SignUp extends React.Component {
@@ -18,6 +18,11 @@ export default class SignUp extends React.Component {
             password: '',
             error: ''
         }
+    }
+
+    componentWillUnmount() {
+        // Set error to undefined when page is changed
+        this.props.dispatch(userError(undefined))
     }
 
     getEmailState() {
@@ -43,17 +48,16 @@ export default class SignUp extends React.Component {
     }
 
     handleSubmit(e) {
-         //TODO
-         e.preventDefault()
+        e.preventDefault()
         this.props.dispatch(signUpUser(this.state.email, this.state.password))
     }
 
     printError() {
-        if(this.state.error != '') {
+        if(this.props.user.error != undefined) {
             return (
                 <div>
                     <Alert bsStyle="danger">
-                        <strong>Login error:</strong> {this.state.error}
+                        <strong>Login error:</strong> {this.props.user.error}
                     </Alert> 
                 </div>
                 
@@ -93,7 +97,7 @@ export default class SignUp extends React.Component {
                         Sign up
                     </Button>
                 </form>
-                <p>{ErrorMessage}</p>
+                <div>{ErrorMessage}</div>
             </div>
         )
     }
