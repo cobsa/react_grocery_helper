@@ -9,7 +9,7 @@ describe('user reducer', () => {
             },
             logged: false,
             isFetching: false,
-            error: null,
+            error: undefined,
         })
     })
     it('should return user is logging in', () => {
@@ -22,7 +22,7 @@ describe('user reducer', () => {
             },
             logged: false,
             isFetching: true,
-            error: null,
+            error: undefined,
         })
     })
     it('should return user is logging out', () => {
@@ -35,7 +35,7 @@ describe('user reducer', () => {
             },
             logged: false,
             isFetching: true,
-            error: null,
+            error: undefined,
         })
     })
     it('should log user in', () => {
@@ -54,7 +54,7 @@ describe('user reducer', () => {
             },
             logged: true,
             isFetching: false,
-            error: null,
+            error: undefined,
         })
     })
     it('should log user out', () => {
@@ -67,7 +67,7 @@ describe('user reducer', () => {
             },
             logged: true,
             isFetching: false,
-            error: null,
+            error: undefined,
         }
         expect(user(initialState, {
             type: 'USER_LOGGED_OUT'
@@ -78,7 +78,7 @@ describe('user reducer', () => {
             },
             logged: false,
             isFetching: false,
-            error: null,
+            error: undefined,
         })
     })
     it('should add error to state', () => {
